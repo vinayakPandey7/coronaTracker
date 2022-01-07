@@ -1,0 +1,11 @@
+<div>
+    MAin page component
+    <div style="background-color: gray;">
+        <div  routerLink="/state" style="background-color: green; text-align: center; cursor: pointer;" (click)="handleStateClick(state)" *ngFor="let state of stateList" >
+            <p>{{state}}</p>
+            
+        </div>
+    </div>
+
+    
+</div>

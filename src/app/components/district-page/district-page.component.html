@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row justify-content-md-center">
       <div style="text-align: center; margin-top: 5vh; margin-bottom: 1vh">
-        <p class="h1" style="text-align: center;font-weight: bolder;">
+        <p class="h1" style="text-align: center; font-weight: bolder">
           District: {{ distData.distName }}
         </p>
       </div>
@@ -13,9 +13,10 @@
 
       <!-- district chart -->
       <div>
-        <mat-form-field style="display: flex; justify-content: flex-end;">
+        <mat-form-field style="display: flex; justify-content: flex-end">
           <mat-label>Select Chart</mat-label>
-          <mat-select [(ngModel)]="selectedValue" (selectionChange)="changeChart($event.value)">
+          <mat-select aria-label="chart value" [(ngModel)]="selectedValue" (selectionChange)="changeChart($event.value)"
+            aria-out>
             <mat-option *ngFor="let food of foods" [value]="food.value">
               {{ food.viewValue }}
             </mat-option>

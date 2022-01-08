@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
 import { Router } from "@angular/router";
 import * as Highcharts from "highcharts";
-import { ChartService } from "../chart-service";
+import { ChartService } from "../../services/chart-service";
 
 interface Food {
   value: string;
@@ -106,7 +106,6 @@ export class StatePageComponent implements OnInit {
 
       this.drawChart(this.options);
       Highcharts.chart("container", this.options);
-      
     } else {
       this.route.navigate(["/"]);
     }

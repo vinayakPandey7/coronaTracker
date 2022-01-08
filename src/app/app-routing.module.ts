@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DistrictPageComponent } from './district-page/district-page.component';
-import { MainPageComponent } from './main-page/main-page.component';
-import { StatePageComponent } from './state-page/state-page.component';
+import { DistrictPageComponent } from './components/district-page/district-page.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { StatePageComponent } from './components/state-page/state-page.component';
 
 const routes: Routes = [
   {path:'',component: MainPageComponent},

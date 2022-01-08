@@ -1,0 +1,24 @@
+<div class="container" style="padding-bottom: 10vh">
+  <app-loader *ngIf="isLoading"></app-loader>
+  <!-- bannerImage -->
+  <div class="row">
+    <div class="col col-lg-12" style="
+        display: flex;
+        justify-content: center;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+      ">
+      <img src="{{ bannerImage }}" width="50%" alt="covid image" />
+    </div>
+  </div>
+
+  <!-- list of states -->
+  <div style="text-align: center; padding-pottom: 100px">
+    <mat-selection-list aria-label="chart value" [multiple]="false">
+      <mat-list-option routerLink="/state" style="margin-bottom: 7px; background-color: rgb(253, 249, 248)"
+        *ngFor="let state of stateList" [value]="state" (click)="handleStateClick(state)">
+        {{ state }}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>

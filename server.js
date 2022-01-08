@@ -8,11 +8,12 @@ const app = express();
 app.use(compression());
 // Serve only the static files form the dist directory
 
-
+console.log('hello from node server')
+console.log(__dirname)
 app.use(express.static(__dirname + '/dist/corona-tracker'));
-app.get('/sitemap.xml', function(req, res) {
-    res.sendFile(path.join(__dirname, 'dist/corona-tracker/assets/sitemap.xml'));
-  });
+// app.get('/sitemap.xml', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'dist/corona-tracker/assets/sitemap.xml'));
+//   });
 app.get('/*', function(req,res) { res.sendFile(path.join(__dirname, "dist/corona-tracker/index.html")); });
 
 const server = http.createServer(app)

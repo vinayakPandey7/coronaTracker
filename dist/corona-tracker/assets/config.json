@@ -1,0 +1,6 @@
+{
+    "API_Url": "https://data.covid19india.org/state_district_wise.json",
+    "textfile": "assets/textfile.txt",
+    "date": "2020-01-29"
+}
+  

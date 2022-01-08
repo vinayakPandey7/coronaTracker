@@ -10,6 +10,7 @@ app.use(compression());
 
 console.log('hello from node server')
 console.log(__dirname)
+console.log(process.env.port)
 app.use(express.static(__dirname + '/dist/corona-tracker'));
 // app.get('/sitemap.xml', function(req, res) {
 //     res.sendFile(path.join(__dirname, 'dist/corona-tracker/assets/sitemap.xml'));

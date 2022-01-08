@@ -15,7 +15,7 @@ import { CardsComponent } from './cards/cards.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +33,8 @@ import {MatListModule} from '@angular/material/list';
     ChartModule,
     MatCardModule,
     MatTableModule,
-    MatListModule
+    MatListModule,
+    FormsModule
 
   ],
   providers: [

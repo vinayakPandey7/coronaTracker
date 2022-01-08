@@ -14,7 +14,8 @@
         <!-- button to select chart Type -->
         <mat-form-field style="display: flex; justify-content: flex-end">
           <mat-label>Select chart Type</mat-label>
-          <mat-select (selectionChange)="changeChart($event.value)">
+          <mat-select [(ngModel)]="selectedValue" (selectionChange)="changeChart($event.value)">
+
             <mat-option *ngFor="let food of foods" [value]="food.value">
               {{ food.viewValue }}
             </mat-option>
@@ -31,9 +32,10 @@
           <h3 style="text-align: center;">District List</h3>
         </div>
 
-        <div style="text-align: center; background-color: rgb(253,249,248);margin-top: -13px;">
-          <mat-selection-list [multiple]="false">
-            <mat-list-option routerLink="/district" *ngFor="let dist of stateData.district" [value]="dist"
+        <div style="justify-content:center;display:flex">
+          <mat-selection-list [multiple]="false" style=" text-align: center;;margin-top: -13px; width: 50%;">
+            <mat-list-option style=" background-color: rgb(253,249,248);margin-bottom: 7px; background-color: white"
+              routerLink="/district" *ngFor="let dist of stateData.district" [value]="dist"
               (click)="handleDistClick(dist)">
               {{ dist?.distName }}
             </mat-list-option>

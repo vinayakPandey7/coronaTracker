@@ -60,10 +60,11 @@ export class DistrictPageComponent implements OnInit {
       source: ''
     }
   ]
+  selectedValue: any;
   constructor(private route:Router, private ChartService : ChartService) { }
 
   ngOnInit(): void {
-
+    this.selectedValue = this.foods[0].value;
     if(localStorage.getItem("distData") != null){
       this.distData = JSON.parse(localStorage.getItem('distData') || '{}');
       

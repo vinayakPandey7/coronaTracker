@@ -67,7 +67,7 @@ export class StatePageComponent implements OnInit {
   covidchart: any;
   options: any;
   chartData: any;
-
+  selectedValue: any;
 
 
   constructor(
@@ -78,7 +78,7 @@ export class StatePageComponent implements OnInit {
    }
 
   ngOnInit(): void {
-   
+    this.selectedValue = this.foods[0].value;
     if(localStorage.getItem("stateData") != null){
       this.stateData = JSON.parse(localStorage.getItem('stateData') || '{}');
      
@@ -108,7 +108,7 @@ export class StatePageComponent implements OnInit {
      
 
      
-      this.options = this.ChartService.getOption('bar',this.chartData);
+      this.options = this.ChartService.getOption('column',this.chartData);
 
       
       Highcharts.chart('container', this.options);

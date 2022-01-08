@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import * as Highcharts from 'highcharts';
+declare var require: any
 
+require('highcharts/modules/exporting')(Highcharts);
+require('highcharts/modules/export-data')(Highcharts);
 @Injectable({
   providedIn: 'root'
 })
@@ -59,15 +62,29 @@ export class ChartService {
         chart: {
           type: chartType,
           height: 700
-        },
+        },exporting: {
+          enabled: true
+      },navigation: {
+        buttonOptions: {
+            height: 40,
+            width: 48,
+            symbolSize: 24,
+            symbolX: 23,
+            symbolY: 21,
+            symbolStrokeWidth: 2
+        }
+    },
         legend: {
           // layout: 'vertical',
           // align: 'right',
           // verticalAlign: 'middle' 
         },
         title: {
-          text: 'Covid Cases'
-        },
+          text:'Covid Status Chart',
+          style: {
+              fontSize: '25px'
+          }
+      },
         credits: {
           enabled: false
         },
@@ -81,6 +98,7 @@ export class ChartService {
           type: 'category'
     
         },
+
         series:  [{
           name: 'Confirmed',
           color: 'blue',
@@ -114,13 +132,26 @@ export class ChartService {
           height: 700
         },
         legend: {
+
           // layout: 'vertical',
           // align: 'right',
           // verticalAlign: 'middle' 
-        },
-        title: {
-          text: 'Covid Cases'
-        },
+        },navigation: {
+          buttonOptions: {
+              height: 40,
+              width: 48,
+              symbolSize: 24,
+              symbolX: 23,
+              symbolY: 21,
+              symbolStrokeWidth: 2
+          }
+      },
+      title: {
+        text:'Covid Status Chart',
+        style: {
+            fontSize: '25px'
+        }
+    },
         credits: {
           enabled: false
         },
@@ -131,7 +162,8 @@ export class ChartService {
             dataLabels: {
                 enabled: true,
                 format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
+            },
+            showInLegend: true
         }
         },
     
@@ -140,7 +172,7 @@ export class ChartService {
     
         },
         series:  [{
-          name: 'Brands',
+          name: 'Status',
           colorByPoint: true,
           data: [{
               name: 'Confirm',

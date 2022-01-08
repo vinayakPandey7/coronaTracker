@@ -15,7 +15,7 @@
       <div>
         <mat-form-field style="display: flex; justify-content: flex-end;">
           <mat-label>Select Chart</mat-label>
-          <mat-select (selectionChange)="changeChart($event.value)">
+          <mat-select [(ngModel)]="selectedValue" (selectionChange)="changeChart($event.value)">
             <mat-option *ngFor="let food of foods" [value]="food.value">
               {{ food.viewValue }}
             </mat-option>

@@ -16,6 +16,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
+import { LoaderComponent } from './loader/loader.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     StatePageComponent,
     DistrictPageComponent,
     CardsComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import { FormsModule } from '@angular/forms';
     MatCardModule,
     MatTableModule,
     MatListModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule
+
 
   ],
   providers: [

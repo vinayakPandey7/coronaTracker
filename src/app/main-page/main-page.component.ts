@@ -12,7 +12,8 @@ export class MainPageComponent implements OnInit {
   API_DATA : any;
   stateList : string[] = [];
   finalStateData:any = {stateName:'',district:[],stateStatus:{stateActive:0,stateConfirmed:0,stateDeceased:0,statRecovered:0}};
-  bannerImage= '../../assets/images/covidHeader.png'
+  bannerImage= '../../assets/images/covidHeader.png';
+  isLoading:boolean = true;
   constructor(private ApiService: ApiService) { }
   
   ngOnInit(): void {
@@ -27,18 +28,15 @@ export class MainPageComponent implements OnInit {
     this.ApiService.getData()
     .subscribe(
       (res:any) => {
-        
-        
         for (const property in res) {
           if (property != 'State Unassigned'){ this.stateList.push(property);} 
         }
-
         this.API_DATA = res;
         
-      
+        
       },
       (error: any) => console.log(error),
-      () => console.log("covid data FETCHED successfully")
+      () => this.isLoading =false
     )
 
     
@@ -49,18 +47,10 @@ export class MainPageComponent implements OnInit {
 
    
     handleStateClick(state:any): void{
-      
       let stateData = this.API_DATA[state]
       let distNameList: String[] = [];
-      console.log("inside handlStateCLick1")
-      console.log(this.finalStateData)
-      console.log(state)
       this.finalStateData['stateName'] = state;
-      console.log("inside handlStateCLick2")
       distNameList = Object.keys(stateData['districtData']);
-      console.log("inside handlStateCLick3")
-    //  let distNameList  = arr.filter(item => !['Unknown'].includes(item))
-      
 
       distNameList.forEach((itm:any,i) => {
 

@@ -11,7 +11,8 @@
   <!-- list of states -->
   <div style="background-color: white; text-align: center; padding-pottom:100px;">
     <mat-selection-list [multiple]="false">
-      <mat-list-option routerLink="/state" *ngFor="let state of stateList" [value]="state">
+      <mat-list-option routerLink="/state" *ngFor="let state of stateList" [value]="state"
+        (click)="handleStateClick(state)">
         {{state}}
       </mat-list-option>
     </mat-selection-list>

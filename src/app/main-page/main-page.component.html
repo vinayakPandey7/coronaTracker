@@ -1,11 +1,21 @@
-<div>
-    MAin page component
-    <div style="background-color: gray;">
-        <div  routerLink="/state" style="background-color: green; text-align: center; cursor: pointer;" (click)="handleStateClick(state)" *ngFor="let state of stateList" >
-            <p>{{state}}</p>
-            
-        </div>
-    </div>
+<div class="container" style="padding-bottom: 10vh;">
 
-    
+  <!-- bannerImage -->
+  <div class="row">
+    <div class="col col-lg-12" style="display: flex;justify-content: center; margin-top: 10vh;margin-bottom: 10vh;">
+      <img src={{bannerImage}} width="50%" />
+    </div>
+  </div>
+
+
+  <!-- list of states -->
+  <div style="background-color: white; text-align: center; padding-pottom:100px;">
+    <mat-selection-list [multiple]="false">
+      <mat-list-option routerLink="/state" *ngFor="let state of stateList" [value]="state">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+
+
 </div>

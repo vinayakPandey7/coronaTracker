@@ -52,9 +52,13 @@ export class MainPageComponent implements OnInit {
       
       let stateData = this.API_DATA[state]
       let distNameList: String[] = [];
-
+      console.log("inside handlStateCLick1")
+      console.log(this.finalStateData)
+      console.log(state)
       this.finalStateData['stateName'] = state;
+      console.log("inside handlStateCLick2")
       distNameList = Object.keys(stateData['districtData']);
+      console.log("inside handlStateCLick3")
     //  let distNameList  = arr.filter(item => !['Unknown'].includes(item))
       
 

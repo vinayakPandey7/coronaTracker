@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import * as Highcharts from "highcharts";
+var Highcharts = require('highcharts');
 import { ChartService } from "../../services/chart-service";
 interface Food {
   value: string;

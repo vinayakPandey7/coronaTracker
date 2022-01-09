@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
-import { ChartModule } from 'angular-highcharts';
+import { HighchartsChartModule } from "highcharts-angular";
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
@@ -38,7 +38,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     HttpClientModule,
     AppRoutingModule,
     MatSelectModule,
-    ChartModule,
+    HighchartsChartModule,
     MatCardModule,
     MatTableModule,
     MatListModule,

@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
-import * as Highcharts from "highcharts";
 declare var require: any;
+var Highcharts = require('highcharts');
+
+
 
 require("highcharts/modules/exporting")(Highcharts);
 require("highcharts/modules/export-data")(Highcharts);
@@ -8,50 +10,7 @@ require("highcharts/modules/export-data")(Highcharts);
   providedIn: "root",
 })
 export class ChartService {
-  // public options: any = {
-  //   chart: {
-  //     type: 'bar',
-  //     height: 700
-  //   },
-  //   legend: {
-  //     // layout: 'vertical',
-  //     // align: 'right',
-  //     // verticalAlign: 'middle'
-  //   },
-  //   title: {
-  //     text: 'Covid Cases'
-  //   },
-  //   credits: {
-  //     enabled: false
-  //   },
-  //   plotOptions: {
-  //     bar: {
-  //       grouping: false,
-  //     }
-  //   },
-
-  //   xAxis: {
-  //     type: 'category'
-
-  //   },
-  //   series:  [{
-  //     name: 'Confirmed',
-  //     color: 'blue',
-  //     data: [{name: 'Confirmed', y: 24916, x: 0}]
-  //   }, {
-  //     name: 'Active',
-  //     color: 'yellow',
-  //     data: [{name: 'Active', y: 11816, x: 1}]
-  //   }, {
-  //     name: 'Recovered',
-  //     color: 'green',
-  //     data: [{name: 'Recovered', y: 34400, x: 2}]
-  //   }, {
-  //     name: 'Death',
-  //     color: 'red',
-  //     data: [{name: 'Death', y: 12908, x: 3}]
-  //   }]
-  // }
+  
   constructor() {}
 
   getOption(chartType: string, dataVal: any) {

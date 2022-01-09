@@ -76,14 +76,12 @@ export class StatePageComponent implements OnInit {
     // get initial value of state data if availble 
     if (localStorage.getItem("stateData") != null) {
       this.stateData = JSON.parse(localStorage.getItem("stateData") || "{}");
-      console.log(this.stateData)
       let confirm = this.stateData?.stateStatus["stateConfirmed"],
         active = this.stateData?.stateStatus["stateActive"],
         recovered = this.stateData?.stateStatus["statRecovered"],
         deaths = this.stateData?.stateStatus["stateDeceased"];
         
       this.chartData = [confirm, active, recovered, deaths];
-      console.log(this.stateData?.stateStatus["stateConfirmed"])
       this.statekeyfact.forEach((itm) => {
         switch (itm.name) {
           case "totalConfirmed":
@@ -117,7 +115,6 @@ export class StatePageComponent implements OnInit {
 
   drawChart(options: chartOptions): void {
     this.stateChart = Highcharts.chart("container", this.options);
-    console.log(this.stateChart)
     this.isLoading = false;
   }
 
@@ -133,7 +130,6 @@ export class StatePageComponent implements OnInit {
 
    // destroy the chart when new component loads
   ngOnDestroy(): void {
-    console.log("destroy eneven tstate fiered")
     this.stateChart.destroy();
   }
 }

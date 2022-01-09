@@ -77,14 +77,12 @@ export class DistrictPageComponent implements OnInit {
     this.selectedValue = this.chartTypes[0].value;
     if (localStorage.getItem("distData") != null) {
       this.distData = JSON.parse(localStorage.getItem("distData") || "{}");
-      console.log(this.distData)
       let confirm = this.distData["confirmed"],
         active = this.distData["active"],
         recovered = this.distData["recovered"],
         deaths = this.distData["deceased"];
 
       this.plotData = [confirm, active, recovered, deaths];
-      console.log(this.plotData)
       this.distkeyfact.forEach((itm) => {
         switch (itm.name) {
           case "totalConfirmed":
@@ -112,7 +110,6 @@ export class DistrictPageComponent implements OnInit {
   }
 
   makeChart(options: chartOptions) {
-    console.log(options)
     this.distChart= Highcharts.chart("containerDist", options);
   }
 

@@ -1,13 +1,10 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-// import * as Highcharts from "highcharts";
 import { ChartService } from "../../services/chart-service";
 var Highcharts = require('highcharts');
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import { chartTypes } from "src/app/interface/chart-types";
+import { chartOptions } from "src/app/interface/chart-options";
+import { RegionData } from "src/app/interface/region-data";
 
 @Component({
   selector: "app-state-page",
@@ -54,34 +51,39 @@ export class StatePageComponent implements OnInit {
       source: "",
     },
   ];
-  stateData: any;
-  foods: Food[] = [
+
+  stateData: RegionData | any;
+  
+  chartTypes: chartTypes[] = [
     { value: "column", viewValue: "Column" },
     { value: "bar", viewValue: "Bar" },
     { value: "line", viewValue: "Line" },
     { value: "pie", viewValue: "Pie Chart" },
   ];
 
-  covidchart: any;
-  options: any;
+  options: chartOptions | undefined;
   chartData: number[] = [];
-  selectedValue: any;
+  selectedValue: string = 'Column';
   isLoading: boolean = true;
-
+  stateChart: any;
   constructor(private route: Router, private ChartService: ChartService) {}
 
   ngOnInit(): void {
+    // enable loader
     this.isLoading = true;
-    this.selectedValue = this.foods[0].value;
+    this.selectedValue = this.chartTypes[0].value;
+    
+    // get initial value of state data if availble 
     if (localStorage.getItem("stateData") != null) {
       this.stateData = JSON.parse(localStorage.getItem("stateData") || "{}");
-
-      let confirm = this.stateData.stateStatus["stateConfirmed"],
-        active = this.stateData.stateStatus["stateActive"],
-        recovered = this.stateData.stateStatus["statRecovered"],
-        deaths = this.stateData.stateStatus["stateDeceased"];
+      console.log(this.stateData)
+      let confirm = this.stateData?.stateStatus["stateConfirmed"],
+        active = this.stateData?.stateStatus["stateActive"],
+        recovered = this.stateData?.stateStatus["statRecovered"],
+        deaths = this.stateData?.stateStatus["stateDeceased"];
+        
       this.chartData = [confirm, active, recovered, deaths];
-
+      console.log(this.stateData?.stateStatus["stateConfirmed"])
       this.statekeyfact.forEach((itm) => {
         switch (itm.name) {
           case "totalConfirmed":
@@ -102,27 +104,36 @@ export class StatePageComponent implements OnInit {
         }
       });
 
-      //  get chart options data
+      //  get chart options data from service
       this.options = this.ChartService.getOption("column", this.chartData);
 
+      // draw the initial chart when component loads first time
       this.drawChart(this.options);
-      Highcharts.chart("container", this.options);
     } else {
       this.route.navigate(["/"]);
     }
   }
 
-  drawChart(options: any): void {
-    Highcharts.chart("container", this.options);
+
+  drawChart(options: chartOptions): void {
+    this.stateChart = Highcharts.chart("container", this.options);
+    console.log(this.stateChart)
     this.isLoading = false;
   }
 
-  changeChart(chartType: any) {
+  // handle change chart event
+  changeChart(chartType: any): void {
     this.options = this.ChartService.getOption(chartType, this.chartData);
     this.drawChart(this.options);
   }
 
   handleDistClick(distData: any): void {
     localStorage.setItem("distData", JSON.stringify(distData));
+  }
+
+   // destroy the chart when new component loads
+  ngOnDestroy(): void {
+    console.log("destroy eneven tstate fiered")
+    this.stateChart.destroy();
   }
 }

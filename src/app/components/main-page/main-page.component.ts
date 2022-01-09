@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from "../../services/api.service";
-import { CovidData } from "../../interface/covid-data";
 
 @Component({
   selector: "app-main-page",
@@ -14,10 +13,10 @@ export class MainPageComponent implements OnInit {
     stateName: "",
     district: [],
     stateStatus: {
-      stateActive: 0,
-      stateConfirmed: 0,
-      stateDeceased: 0,
-      statRecovered: 0,
+    stateActive: 0,
+    stateConfirmed: 0,
+    stateDeceased: 0,
+    statRecovered: 0,
     },
   };
   bannerImage = "../../assets/images/covidHeader.png";
@@ -43,7 +42,7 @@ export class MainPageComponent implements OnInit {
     );
   }
 
-  handleStateClick(state: any): void {
+  handleStateClick(state:any): void {
     let stateData = this.API_DATA[state];
     let distNameList: String[] = [];
     this.finalStateData["stateName"] = state;

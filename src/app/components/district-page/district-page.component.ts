@@ -2,20 +2,29 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 var Highcharts = require('highcharts');
 import { ChartService } from "../../services/chart-service";
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import { chartTypes } from "src/app/interface/chart-types";
+import {chartOptions} from "src/app/interface/chart-options";
+import {RegionData} from "src/app/interface/region-data";
+
+
+
 @Component({
   selector: "app-district-page",
   templateUrl: "./district-page.component.html",
   styleUrls: ["./district-page.component.css"],
 })
+
 export class DistrictPageComponent implements OnInit {
-  distData: any;
-  plotData: any;
-  options: any;
-  foods: Food[] = [
+  distData: RegionData = {
+    distName: "",
+    active: 0,
+    confirmed: 0,
+    deceased: 0,
+    recovered: 0
+  }
+  plotData: number[]=[];
+  options: chartOptions | undefined;
+  chartTypes: chartTypes[] = [
     { value: "bar", viewValue: "Bar" },
     { value: "column", viewValue: "Column" },
     { value: "line", viewValue: "Line" },
@@ -61,19 +70,21 @@ export class DistrictPageComponent implements OnInit {
     },
   ];
   selectedValue: any;
+  distChart: any;
   constructor(private route: Router, private ChartService: ChartService) {}
 
   ngOnInit(): void {
-    this.selectedValue = this.foods[0].value;
+    this.selectedValue = this.chartTypes[0].value;
     if (localStorage.getItem("distData") != null) {
       this.distData = JSON.parse(localStorage.getItem("distData") || "{}");
-
+      console.log(this.distData)
       let confirm = this.distData["confirmed"],
         active = this.distData["active"],
         recovered = this.distData["recovered"],
         deaths = this.distData["deceased"];
 
       this.plotData = [confirm, active, recovered, deaths];
+      console.log(this.plotData)
       this.distkeyfact.forEach((itm) => {
         switch (itm.name) {
           case "totalConfirmed":
@@ -100,14 +111,18 @@ export class DistrictPageComponent implements OnInit {
     }
   }
 
-  makeChart(options: any) {
-    Highcharts.chart("containerDist", options);
+  makeChart(options: chartOptions) {
+    console.log(options)
+    this.distChart= Highcharts.chart("containerDist", options);
   }
 
-  changeChart(chartType: any) {
-    this.options.chart.type = chartType;
-
+  changeChart(chartType: string) {
     this.options = this.ChartService.getOption(chartType, this.plotData);
     Highcharts.chart("containerDist", this.options);
+  }
+
+  // destroy the chart when new component loads
+  ngOnDestroy(): void {
+    this.distChart.destroy();
   }
 }

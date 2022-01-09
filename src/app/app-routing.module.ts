@@ -8,8 +8,8 @@ const routes: Routes = [
   {path:'',component: MainPageComponent},
   {path:'main', redirectTo: '' },
   {path:'state',component: StatePageComponent},
-  {path:'district',component: DistrictPageComponent}
-  // {path: '**', component: PageNotFoundComponent}
+  {path:'district',component: DistrictPageComponent},
+  {path: '**', redirectTo: ""}
 ];
 
 @NgModule({

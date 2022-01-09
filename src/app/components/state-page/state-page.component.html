@@ -18,8 +18,8 @@
           <mat-label>Select chart Type</mat-label>
           <mat-select aria-label="chart value" [(ngModel)]="selectedValue"
             (selectionChange)="changeChart($event.value)">
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{ food.viewValue }}
+            <mat-option *ngFor="let chartType of chartTypes" [value]="chartType.value">
+              {{ chartType.viewValue }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -44,7 +44,7 @@
                 background-color: rgb(253, 249, 248);
                 margin-bottom: 7px;
                 background-color: white;
-              " routerLink="/district" *ngFor="let dist of stateData.district" [value]="dist"
+              " routerLink="/district" *ngFor="let dist of stateData?.district" [value]="dist"
               (click)="handleDistClick(dist)">
               {{ dist?.distName }}
             </mat-list-option>

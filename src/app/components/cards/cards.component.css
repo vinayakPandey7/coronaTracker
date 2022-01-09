@@ -1,3 +1,11 @@
+.mat-card {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.mat-card > p {
+  font-family: "Roboto", sans-serif;
+}
 .mat-card-sm-image {
   width: 60px;
   height: 60px;

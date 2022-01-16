@@ -10,6 +10,11 @@ Node server with compression gzip encoding is used to reduce the file size.
 ## YOUTUBE LINK
 URL: https://youtu.be/212HKCpnntA
 
+
+![Order food (1)](https://user-images.githubusercontent.com/39346237/149666269-862f49be-2846-4814-950e-e5e68fb0ead9.jpg)
+
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

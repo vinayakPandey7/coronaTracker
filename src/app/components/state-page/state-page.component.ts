@@ -74,7 +74,7 @@ export class StatePageComponent implements OnInit {
     this.selectedValue = this.chartTypes[0].value;
     
     // get initial value of state data if availble 
-    if (localStorage.getItem("stateData") != null) {
+    if (localStorage.getItem("stateData") != undefined) {
       this.stateData = JSON.parse(localStorage.getItem("stateData") || "{}");
       let confirm = this.stateData?.stateStatus["stateConfirmed"],
         active = this.stateData?.stateStatus["stateActive"],

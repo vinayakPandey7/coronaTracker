@@ -75,7 +75,7 @@ export class DistrictPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedValue = this.chartTypes[0].value;
-    if (localStorage.getItem("distData") != null) {
+    if (localStorage.getItem("distData") != undefined) {
       this.distData = JSON.parse(localStorage.getItem("distData") || "{}");
       let confirm = this.distData["confirmed"],
         active = this.distData["active"],
